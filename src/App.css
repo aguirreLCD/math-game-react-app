@@ -1,38 +1,136 @@
-.App {
+body {
+  font-family: sans-serif;
+  margin: 0;
+  color: rgb(36, 36, 36);
+}
+
+.main-userInterface {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.our-form {
+  display: flex;
+  justify-content: center;
+}
+
+.our-field {
+  padding: 10px;
+  margin: 0 10px;
+  border-color: black;
+}
+
+.rank {
+  text-align: center;
+  font-size: 1rem;
+}
+
+.boxes {
+  display: flex;
+  width: 100%;
+}
+
+.progress {
+  border: 1px solid #c7c7c7;
+  border-right: none;
+  position: relative;
+}
+
+.progress-inner {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 100%;
+  background-color: #7ecc00;
+  opacity: 0.57;
+
+  transform: scaleX(0);
+  transform-origin: center left;
+  transition: transform 0.4s ease-out;
+}
+
+.box {
+  height: 40px;
+  border-right: 1px solid #c7c7c7;
+  flex: 1;
+}
+
+.overlay {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: rgba(255, 255, 255, 0.82);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.33s ease-out;
+  transform: scale(1.2);
+}
+
+.overlay-inner {
+  text-align: center;
+  max-width: 700px;
+}
+
+body.overlay-is-open .overlay,
+.overlay--visible {
+  opacity: 1;
+  visibility: visible;
+  transform: scale(1);
+}
+
+body.overlay-is-open .main-userInterface,
+.blurred {
+  filter: blur(3px);
+}
+
+@keyframes showError {
+  50% {
+    color: red;
+    transform: scale(1.2);
+  }
+
+  100% {
+    color: rgb(36, 36, 36);
+    transform: scale(1);
+  }
+}
+
+.animate-wrongAnswer {
+  animation: 0.42s showError;
+}
+
+.problem {
+  font-size: 4rem;
+  margin: 0;
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.end-message {
+  font-size: 1.6rem;
+  margin-top: 0;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.reset-button {
+  font-size: 1.3rem;
+  background-color: #004094;
+  border: none;
+  color: #fff;
+  border-radius: 8px;
+  padding: 13px 21px;
+  display: inline-block;
+  outline: none;
+  cursor: pointer;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+.reset-button:hover {
+  background-color: #003672;
 }
 
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.reset-button:focus {
+  background-color: #00275a;
 }
