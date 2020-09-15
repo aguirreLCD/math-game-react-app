@@ -12,7 +12,7 @@ function App() {
   const resetButton = useRef(null);
 
   useEffect(() => {
-    if (score == 10 || mistakes == 3) {
+    if (score === 10 || mistakes === 3) {
       setTimeout(() => {
         resetButton.current.focus();
       }, 331);
@@ -36,14 +36,14 @@ function App() {
     answerField.current.focus();
 
     let correctAnswer;
-    if (currentProblem.operator == "+")
+    if (currentProblem.operator === "+")
       correctAnswer = currentProblem.firstNumber + currentProblem.secondNumber;
-    if (currentProblem.operator == "-")
+    if (currentProblem.operator === "-")
       correctAnswer = currentProblem.firstNumber - currentProblem.secondNumber;
-    if (currentProblem.operator == "x")
+    if (currentProblem.operator === "x")
       correctAnswer = currentProblem.firstNumber * currentProblem.secondNumber;
 
-    if (correctAnswer == parseInt(userAnswer, 10)) {
+    if (correctAnswer === parseInt(userAnswer, 10)) {
       setScore((previousValue) => previousValue + 1);
       setCurrentProblem(generateProblem());
       setUserAnswer("");
@@ -68,7 +68,7 @@ function App() {
       <div
         className={
           "main-userInterface" +
-          (mistakes == 3 || score == 10 ? " blurred" : "")
+          (mistakes === 3 || score === 10 ? " blurred" : "")
         }
       >
         <p className={"problem" + (showError ? " animate-wrongAnswer" : "")}>
@@ -99,12 +99,13 @@ function App() {
 
       <div
         className={
-          "overlay" + (mistakes == 3 || score == 10 ? " overlay--visible" : "")
+          "overlay" +
+          (mistakes === 3 || score === 10 ? " overlay--visible" : "")
         }
       >
         <div className="overlay-inner">
           <p className="end-message">
-            {score == 10
+            {score === 10
               ? "Bravo! You won! Congrats!"
               : "Sorry! You lost. But you can try again!"}
           </p>
